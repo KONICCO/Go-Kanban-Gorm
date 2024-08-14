@@ -1,0 +1,44 @@
+mkdir handler/api
+mkdir client
+mkdir config
+mkdir handler/web
+mkdir handler/middleware
+mkdir handler/respository
+mkdir handler/service
+mkdir service
+mkdir utils
+mkdir views/auth
+mkdir views/general
+mkdir views/main
+
+
+├── cmd
+│   └── main.go
+├── pkg
+    ├── config
+    ├── controllers
+    │   └── book-controllers.go
+    ├── models
+    │   └── book.go
+    ├── routes
+    │   └── bookstore-routes.go
+    └── utils
+        └── utils.go
+
+
+mkdir handler/api
+mkdir client
+mkdir config
+mkdir handler/web
+mkdir handler/middleware
+mkdir handler/respository
+mkdir handler/service
+mkdir service
+mkdir utils
+mkdir views/auth
+mkdir views/general
+mkdir views/main
+
+
+
+
