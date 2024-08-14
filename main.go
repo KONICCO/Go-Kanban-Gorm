@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
 	"sync"
 
 	"github.com/KONICCO/Go-Kanban-Gorm.git/handler/api"
@@ -15,8 +14,13 @@ import (
 )
 
 func main() {
-	// fmt.Println("halo")
-	os.Setenv("DATABASE_URL", "postgres://postgres:12345@localhost:5432/kanban") // Hapus jika akan melakukan deploy ke fly.io
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }  //menggunakan file .env
+	// os.Setenv("DATABASE_URL", "postgres://postgres:12345@localhost:5432/kanban") // Hapus jika akan melakukan deploy ke fly.io & menggunakna lokal
+
+	//deploy matikan 2 2nya
 	wg := sync.WaitGroup{}
 
 	wg.Add(1)
