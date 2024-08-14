@@ -108,7 +108,7 @@ func (u *userAPI) Register(w http.ResponseWriter, r *http.Request) {
 		"user_id": REG.ID,
 		"message": "register success",
 	})
-	return
+	// return
 	// TODO: answer here
 }
 
