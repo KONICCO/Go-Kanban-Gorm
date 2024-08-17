@@ -84,12 +84,20 @@ func RunServer(db *gorm.DB, mux *http.ServeMux) *http.ServeMux {
 	}
 	// MuxRoute(mux, "POST", "/api/v1/users/login", middleware.Post(http.HandlerFunc(apiHandler.UserAPIHandler.Login)))
 	MuxRoute(mux, "POST", "/api/v1/users/login", middleware.Post(http.HandlerFunc(apiHandler.UserAPIHandler.Login)))
-
 	MuxRoute(mux, "POST", "/api/v1/users/register", middleware.Post(http.HandlerFunc(apiHandler.UserAPIHandler.Register)))
+	MuxRoute(mux, "POST", "/api/v1/users/logout", middleware.Post(http.HandlerFunc(apiHandler.UserAPIHandler.Logout)))
+	MuxRoute(mux, "DELETE", "/api/v1/users/delete", middleware.Delete(http.HandlerFunc(apiHandler.UserAPIHandler.Delete)), "?user_id=")
 
 	MuxRoute(mux, "GET", "/api/v1/tasks/get", middleware.Get(middleware.Auth(http.HandlerFunc(apiHandler.TaskAPIHandler.GetTask))), "?task_id=")
+	MuxRoute(mux, "POST", "/api/v1/tasks/create", middleware.Post(middleware.Auth(http.HandlerFunc(apiHandler.TaskAPIHandler.CreateNewTask))))
+	MuxRoute(mux, "PUT", "/api/v1/tasks/update", middleware.Put(middleware.Auth(http.HandlerFunc(apiHandler.TaskAPIHandler.UpdateTask))), "?task_id=")
+	MuxRoute(mux, "PUT", "/api/v1/tasks/update/category", middleware.Put(middleware.Auth(http.HandlerFunc(apiHandler.TaskAPIHandler.UpdateTaskCategory))), "?task_id=")
+	MuxRoute(mux, "DELETE", "/api/v1/tasks/delete", middleware.Delete(middleware.Auth(http.HandlerFunc(apiHandler.TaskAPIHandler.DeleteTask))), "?task_id=")
 
 	MuxRoute(mux, "GET", "/api/v1/categories/get", middleware.Get(middleware.Auth(http.HandlerFunc(apiHandler.CategoryAPIHandler.GetCategory))))
+	MuxRoute(mux, "GET", "/api/v1/categories/dashboard", middleware.Get(middleware.Auth(http.HandlerFunc(apiHandler.CategoryAPIHandler.GetCategoryWithTasks))))
+	MuxRoute(mux, "POST", "/api/v1/categories/create", middleware.Post(middleware.Auth(http.HandlerFunc(apiHandler.CategoryAPIHandler.CreateNewCategory))))
+	MuxRoute(mux, "DELETE", "/api/v1/categories/delete", middleware.Delete(middleware.Auth(http.HandlerFunc(apiHandler.CategoryAPIHandler.DeleteCategory))), "?category_id=")
 
 	return mux
 }
