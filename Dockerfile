@@ -1,9 +1,10 @@
 # Gunakan image dasar golang versi alpine untuk ukuran image yang lebih kecil
-FROM golang:1.20-alpine
+FROM golang:1.22.5
 
 # Set working directory di dalam container
 WORKDIR /app
-
+COPY go.mod go.sum ./
+RUN go mod download
 # Copy semua file dari direktori lokal ke dalam working directory di container
 COPY . .
 
